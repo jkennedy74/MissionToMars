@@ -43,8 +43,10 @@ soup = bs(html, 'html.parser')
 
 
 # save latest news attributes to variables.
-
+import time
+time.sleep(10)
 article = soup.find("div", class_="list_text")
+time.sleep(10)
 teaser = article.find("div", class_="article_teaser_body").text
 title = article.find("div", class_="content_title").text
 date = article.find("div", class_="list_date").text
@@ -158,13 +160,13 @@ browser.visit(url)
 mars_df = pd.read_html(url)
 mars_df = mars_df[0]
 
-type(mars_df)
+#type(mars_df)
 
 
 # In[17]:
 
 
-mars_df.head()
+#mars_df.head()
 
 
 # In[18]:
@@ -172,7 +174,7 @@ mars_df.head()
 
 #convert to html table string
 table = mars_df.to_html()
-print(table)
+print("table created")
 
 
 # ## Mars Hemispheres
@@ -208,7 +210,7 @@ soup = bs(html, 'html.parser')
 hemisphere = []
 
 for i in range (4):
-    time.sleep(5)
+    time.sleep(8)
     image = browser.find_by_tag('h3')
     image[i].click()
     html = browser.html
